@@ -1,0 +1,4 @@
+org/hotelapp/billing/Controllers/BillingController.class
+org/hotelapp/billing/Services/RabbitMQService.class
+org/hotelapp/billing/Contants/Constants.class
+org/hotelapp/billing/Controllers/BillingApplication.class
