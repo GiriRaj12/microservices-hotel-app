@@ -1,0 +1,5 @@
+org/hotelapp/users/MongoUtils/MongoUtils.class
+org/hotelapp/users/Controller/HotelUsersApplication.class
+org/hotelapp/users/Controller/UserController.class
+org/hotelapp/users/Models/UserDTO.class
+org/hotelapp/users/Services/UserService.class

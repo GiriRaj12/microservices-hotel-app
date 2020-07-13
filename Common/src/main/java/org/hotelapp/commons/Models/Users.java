@@ -1,8 +1,9 @@
 package org.hotelapp.commons.Models;
 
+
 public class Users {
 
-    private String id;
+    private String _id;
 
     private String emailId;
 
@@ -11,11 +12,11 @@ public class Users {
     private String name;
 
     public String getId() {
-        return id;
+        return _id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this._id = id;
     }
 
     public String getEmailId() {

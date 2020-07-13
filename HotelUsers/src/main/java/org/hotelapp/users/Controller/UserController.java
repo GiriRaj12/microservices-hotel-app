@@ -3,21 +3,23 @@ package org.hotelapp.users.Controller;
 import org.hotelapp.commons.Models.ApiResponse;
 import org.hotelapp.users.Models.UserDTO;
 import org.hotelapp.users.Services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
-    @Autowired
+
     private ApiResponse apiResponse;
 
     @PostMapping("/user/register")
     public ApiResponse createUser(@RequestBody UserDTO userDTO){
         try{
+            apiResponse = new ApiResponse();
             apiResponse.setResponse(new UserService().createUser(userDTO));
         }catch (Exception e){
+            e.printStackTrace();
             setFalseResponse(e.getMessage());
         }
         return apiResponse;
@@ -26,8 +28,21 @@ public class UserController {
     @PostMapping("/user/login")
     public ApiResponse loginUser(@RequestBody UserDTO userDTO){
         try{
+            apiResponse = new ApiResponse();
             apiResponse.setResponse(true);
             apiResponse.setData(new UserService().loginUser(userDTO));
+        }catch (Exception e){
+            setFalseResponse(e.getMessage());
+        }
+        return apiResponse;
+    }
+
+    @GetMapping("/user/get")
+    public ApiResponse getUsers(){
+        try{
+            apiResponse = new ApiResponse();
+            apiResponse.setResponse(true);
+            apiResponse.setDatas(new UserService().getUsersList());
         }catch (Exception e){
             setFalseResponse(e.getMessage());
         }
@@ -38,6 +53,5 @@ public class UserController {
         apiResponse.setResponse(false);
         apiResponse.setMessage(message);
     }
-
 
 }

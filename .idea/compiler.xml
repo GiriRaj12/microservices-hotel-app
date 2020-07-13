@@ -7,9 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="HotelInventory" />
+        <module name="HotelUsers" />
         <module name="Common" />
         <module name="HotelBilling" />
-        <module name="HotelUsers" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

@@ -1,0 +1,4 @@
+org/hotelapp/inventory/Controller/InventoryController.class
+org/hotelapp/inventory/Utils/MongoUtils.class
+org/hotelapp/inventory/Models/RoomDTO.class
+org/hotelapp/inventory/Service/InventoryService.class
