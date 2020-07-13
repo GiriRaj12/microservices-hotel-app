@@ -9,7 +9,17 @@ public class RoomDTO {
 
     private String imageUrl;
 
+    private String description;
+
     private int price;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String getRoomName() {
         return roomName;
