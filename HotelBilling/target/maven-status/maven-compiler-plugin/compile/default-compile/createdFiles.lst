@@ -1,4 +1,6 @@
+org/hotelapp/billing/Utils/MongoUtils.class
+org/hotelapp/billing/Services/BillingService.class
 org/hotelapp/billing/Controllers/BillingController.class
 org/hotelapp/billing/Services/RabbitMQService.class
-org/hotelapp/billing/Contants/Constants.class
 org/hotelapp/billing/Controllers/BillingApplication.class
+org/hotelapp/billing/Models/BillingDTO.class

@@ -1,25 +1,50 @@
 package org.hotelapp.billing.Controllers;
 
-import org.hotelapp.billing.Services.RabbitMQService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.hotelapp.billing.Models.BillingDTO;
+import org.hotelapp.billing.Services.BillingService;
+import org.hotelapp.commons.Models.ApiResponse;
+import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.util.concurrent.TimeoutException;
+import javax.websocket.server.PathParam;
 
-@Controller
+
 @RestController
 public class BillingController {
-    @GetMapping("/")
-    public String init() throws IOException, TimeoutException {
-        new RabbitMQService().recieveMessage();
-        return "Hello World";
+
+    private ApiResponse apiResponse;
+
+    @PostMapping("/billing/book")
+    public ApiResponse addBooking(@RequestBody BillingDTO billingDTO){
+        apiResponse = new ApiResponse();
+        try{
+            apiResponse.setResponse(true);
+            apiResponse.setData(new BillingService().addBooking(billingDTO));
+        }catch (Exception e){
+            apiResponse.setFalseResponse(e.getMessage());
+        }
+        return apiResponse;
     }
 
-    @GetMapping("/trigger")
-    public String triggerMQTask() throws IOException, TimeoutException {
-        new RabbitMQService().publishMessage();
-        return "Done triggering";
+    @GetMapping("/billing/get")
+    public ApiResponse getBookings(@RequestParam("userEmail") String emailId){
+        apiResponse = new ApiResponse();
+        try{
+            apiResponse.setResponse(true);
+            apiResponse.setDatas(new BillingService().getBookings(emailId));
+        }catch (Exception e){
+            apiResponse.setFalseResponse(e.getMessage());
+        }
+        return apiResponse;
+    }
+
+    @DeleteMapping("/billing/delete")
+    public ApiResponse deleteBooking(@RequestParam("bookingId") String bookingId){
+        apiResponse = new ApiResponse();
+        try{
+            apiResponse.setResponse(new BillingService().deleteBooking(bookingId));
+        }catch (Exception e){
+            apiResponse.setFalseResponse(e.getMessage());
+        }
+        return apiResponse;
     }
 }
