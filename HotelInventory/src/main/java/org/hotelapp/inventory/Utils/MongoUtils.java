@@ -1,5 +1,6 @@
 package org.hotelapp.inventory.Utils;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
@@ -30,15 +31,29 @@ public class MongoUtils {
         mongoClient.getDatabase(DatabaseConstants.DATABASE).getCollection(Tables.Rooms.toString(), Rooms.class).insertOne(rooms);
     }
 
+    public static void update(Rooms rooms){
+        mongoClient.getDatabase(DatabaseConstants.DATABASE).getCollection(Tables.Rooms.toString(), Rooms.class).findOneAndDelete(new BasicDBObject("_id",rooms.getId()));
+        mongoClient.getDatabase(DatabaseConstants.DATABASE).getCollection(Tables.Rooms.toString(), Rooms.class).insertOne(rooms);
+    }
+
     public static void delete(String id){
         Bson query = Filters.eq("_id",id);
         mongoClient.getDatabase(DatabaseConstants.DATABASE).getCollection(Tables.Rooms.toString(), Rooms.class).deleteOne(query);
     }
 
     public static List<Rooms> get(){
-       List<Rooms> resultList = new ArrayList<>();
-        mongoClient.getDatabase(DatabaseConstants.DATABASE).getCollection(Tables.Rooms.toString(), Rooms.class).find().forEach(e -> resultList.add(e));
+        Bson query = Filters.eq("available",true);
+        List<Rooms> resultList = new ArrayList<>();
+        mongoClient.getDatabase(DatabaseConstants.DATABASE).getCollection(Tables.Rooms.toString(), Rooms.class).find(query).forEach(e -> resultList.add(e));
         return resultList;
+    }
+
+    public static Rooms getById(String id){
+        Bson query = Filters.eq("_id",id);
+        for (Rooms rooms : mongoClient.getDatabase(DatabaseConstants.DATABASE).getCollection(Tables.Rooms.toString(), Rooms.class).find(query)) {
+            return rooms;
+        }
+        return null;
     }
 
 }

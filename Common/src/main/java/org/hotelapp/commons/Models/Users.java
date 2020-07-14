@@ -1,9 +1,12 @@
 package org.hotelapp.commons.Models;
 
 
+import org.bson.codecs.pojo.annotations.BsonId;
+
 public class Users {
 
-    private String _id;
+    @BsonId
+    private String id;
 
     private String emailId;
 
@@ -12,11 +15,11 @@ public class Users {
     private String name;
 
     public String getId() {
-        return _id;
+        return id;
     }
 
     public void setId(String id) {
-        this._id = id;
+        this.id = id;
     }
 
     public String getEmailId() {

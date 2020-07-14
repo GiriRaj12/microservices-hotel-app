@@ -1,8 +1,11 @@
 package org.hotelapp.commons.Models;
 
+import org.bson.codecs.pojo.annotations.BsonId;
+
 public class Rooms {
 
-    private String _id;
+    @BsonId
+    private String id;
 
     private String name;
 
@@ -18,12 +21,22 @@ public class Rooms {
 
     private double price;
 
-    public String get_id() {
-        return _id;
+    private String description;
+
+    public String getDescription() {
+        return description;
     }
 
-    public void set_id(String _id) {
-        this._id = _id;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

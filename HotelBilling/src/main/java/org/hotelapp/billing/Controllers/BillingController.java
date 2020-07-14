@@ -9,6 +9,7 @@ import javax.websocket.server.PathParam;
 
 
 @RestController
+@CrossOrigin
 public class BillingController {
 
     private ApiResponse apiResponse;

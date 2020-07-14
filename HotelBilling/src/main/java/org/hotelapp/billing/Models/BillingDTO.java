@@ -17,6 +17,16 @@ public class BillingDTO {
 
     private String imageUrl;
 
+    private int price;
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     public String getRoomId() {
         return roomId;
     }

@@ -32,6 +32,7 @@ public class UserService {
 
     private Users pullAndValidateUser(UserDTO userDTO) {
         Users users = MongoUtils.getUserByEmail(userDTO.getEmailId());
+        System.out.println(JsonUtils.toJson(users));
         if(!userDTO.getPassword().equals(getDecodedString(users.getPassWord())))
             throw new IllegalArgumentException("Wrong credentials");
         else

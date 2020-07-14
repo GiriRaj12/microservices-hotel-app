@@ -43,4 +43,9 @@ public class ApiResponse {
     public void setDatas(List<?> datas) {
         this.datas = datas;
     }
+
+    public void setFalseResponse(String message){
+        this.response = false;
+        this.message = message;
+    }
 }

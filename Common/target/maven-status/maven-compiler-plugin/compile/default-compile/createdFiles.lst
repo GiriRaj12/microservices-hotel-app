@@ -1,6 +1,11 @@
-org/hotelapp/commons/Models/ApiResponse.class
+org/hotelapp/commons/Models/MQModel.class
 org/hotelapp/commons/Models/Rooms.class
+org/hotelapp/commons/Constants/Services.class
+org/hotelapp/commons/Models/Bookings.class
+org/hotelapp/commons/Utilities/StringUtils.class
+org/hotelapp/commons/Models/ApiResponse.class
 org/hotelapp/commons/Constants/RabbitMQConstants.class
 org/hotelapp/commons/Utilities/JsonUtils.class
 org/hotelapp/commons/Models/Users.class
-org/hotelapp/commons/Utilities/StringUtils.class
+org/hotelapp/commons/Constants/Tables.class
+org/hotelapp/commons/Constants/DatabaseConstants.class

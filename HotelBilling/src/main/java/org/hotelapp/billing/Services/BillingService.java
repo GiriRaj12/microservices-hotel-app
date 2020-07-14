@@ -19,12 +19,14 @@ import java.util.concurrent.TimeoutException;
 public class BillingService {
 
     public Bookings addBooking(BillingDTO billingDTO) throws Exception {
+        System.out.println(JsonUtils.toJson(billingDTO));
         validateBooking(billingDTO);
         return createBooking(billingDTO);
     }
 
     private Bookings createBooking(BillingDTO billingDTO) throws ParseException, IOException, TimeoutException {
         Bookings bookings = buildBooking(billingDTO);
+        System.out.println(JsonUtils.toJson(bookings));
         MongoUtils.save(bookings);
         triggerTaskForUpdates(buildMQ(bookings,"remove"));
         return bookings;
@@ -69,12 +71,14 @@ public class BillingService {
         bookings.setRoomName(billingDTO.getRoomName());
         bookings.setId(UUID.randomUUID().toString());
         bookings.setRoomId(billingDTO.getRoomId());
+        bookings.setPrice(billingDTO.getPrice());
+        System.out.println(JsonUtils.toJson(bookings));
         return bookings;
     }
 
     private Long getDateLong(String date) throws ParseException {
         DateFormat inputFormat = new SimpleDateFormat(
-                "E MMM dd yyyy HH:mm:ss 'GMT'z");
+                "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         return inputFormat.parse(date).toInstant().toEpochMilli();
     }
 
@@ -83,6 +87,7 @@ public class BillingService {
         StringUtils.checkNull(billingDTO.getRoomName()) || StringUtils.checkNull(billingDTO.getUserEmail()) ||
         StringUtils.checkNull(billingDTO.getUserId()))
             throw new IllegalArgumentException("Booking Details are note enough to initiate booking");
+        System.out.println("Into validate booking");
     }
 
 }

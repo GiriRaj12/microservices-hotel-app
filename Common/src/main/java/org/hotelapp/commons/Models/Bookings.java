@@ -1,0 +1,116 @@
+package org.hotelapp.commons.Models;
+
+import org.bson.codecs.pojo.annotations.BsonId;
+
+public class Bookings {
+    @BsonId
+    private String id;
+
+    private String date;
+
+    private Long datelong;
+
+    private String userId;
+
+    private String userEmail;
+
+    private String roomId;
+
+    private String roomName;
+
+    private int count;
+
+    private String roomClass;
+
+    private String imageUrl;
+
+    private int price;
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public String getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public Long getDatelong() {
+        return datelong;
+    }
+
+    public void setDatelong(Long datelong) {
+        this.datelong = datelong;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public String getRoomClass() {
+        return roomClass;
+    }
+
+    public void setRoomClass(String roomClass) {
+        this.roomClass = roomClass;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+}

@@ -1,4 +1,6 @@
 /Users/giri/IdeaProjects/HotelApp/HotelInventory/src/main/java/org/hotelapp/inventory/Utils/MongoUtils.java
+/Users/giri/IdeaProjects/HotelApp/HotelInventory/src/main/java/org/hotelapp/inventory/Service/RabbitMQService.java
+/Users/giri/IdeaProjects/HotelApp/HotelInventory/src/main/java/org/hotelapp/inventory/Controller/HotelInventoryApplication.java
 /Users/giri/IdeaProjects/HotelApp/HotelInventory/src/main/java/org/hotelapp/inventory/Service/InventoryService.java
 /Users/giri/IdeaProjects/HotelApp/HotelInventory/src/main/java/org/hotelapp/inventory/Controller/InventoryController.java
 /Users/giri/IdeaProjects/HotelApp/HotelInventory/src/main/java/org/hotelapp/inventory/Models/RoomDTO.java
