@@ -44,4 +44,4 @@ cd $pd
 
 pwd
 
-#docker-compose up build
+docker-compose up

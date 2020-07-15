@@ -1,6 +1,7 @@
 package org.hotelapp.users.MongoUtils;
 
 import com.mongodb.MongoClientSettings;
+import com.mongodb.MongoCredential;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.model.Filters;
@@ -17,8 +18,11 @@ public class MongoUtils {
             MongoClientSettings.getDefaultCodecRegistry(),
             CodecRegistries.fromProviders(PojoCodecProvider.builder().automatic(true).build())
     );
+
+    private static MongoCredential mongoCredential = MongoCredential.createCredential("admin",DatabaseConstants.DATABASE,"root".toCharArray());
     private static MongoClientSettings settings = MongoClientSettings.builder()
             .codecRegistry(pojoCodecRegistry)
+            .credential(mongoCredential)
             .build();
 
     private static MongoClient mongoClient = MongoClients.create(settings);
