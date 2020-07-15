@@ -85,7 +85,7 @@ public class BillingService {
     private void validateBooking(BillingDTO billingDTO) {
         if(StringUtils.checkNull(billingDTO.getDate()) || StringUtils.checkNull(billingDTO.getImageUrl()) ||
         StringUtils.checkNull(billingDTO.getRoomName()) || StringUtils.checkNull(billingDTO.getUserEmail()) ||
-        StringUtils.checkNull(billingDTO.getUserId()))
+        StringUtils.checkNull(billingDTO.getUserEmail()))
             throw new IllegalArgumentException("Booking Details are note enough to initiate booking");
         System.out.println("Into validate booking");
     }

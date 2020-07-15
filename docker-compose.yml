@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  billing:
+    image: hotelapp/billing
+    ports:
+    - "8081:8081"
+  inventory:
+    image: hotelapp/inventory
+    ports:
+    - "8080:8080"
+  users:
+    image: hotelapp/users
+    ports:
+    - "8083:8083"
+
+

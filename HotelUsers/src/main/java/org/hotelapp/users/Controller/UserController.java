@@ -3,12 +3,10 @@ package org.hotelapp.users.Controller;
 import org.hotelapp.commons.Models.ApiResponse;
 import org.hotelapp.users.Models.UserDTO;
 import org.hotelapp.users.Services.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin
 public class UserController {
 
     private ApiResponse apiResponse;
