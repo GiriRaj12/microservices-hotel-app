@@ -5,10 +5,12 @@ import org.hotelapp.commons.Utilities.JsonUtils;
 import org.hotelapp.commons.Utilities.StringUtils;
 import org.hotelapp.inventory.Models.RoomDTO;
 import org.hotelapp.inventory.Utils.MongoUtils;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.UUID;
 
+@Component
 public class InventoryService {
 
     //Accessors
@@ -25,7 +27,9 @@ public class InventoryService {
     }
 
     public List<Rooms> getAllRooms(){
-        return MongoUtils.get();
+        List<Rooms> list = MongoUtils.get();
+        System.out.println(JsonUtils.toJson(list));
+        return list;
     }
 
     //Logic
