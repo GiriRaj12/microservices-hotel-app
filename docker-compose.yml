@@ -6,42 +6,13 @@ services:
     container_name: billing
     ports:
     - "8081:8081"
-    depends_on:
-      - rabbitmq_service
-      - database
   inventory:
     image: hotelapp/inventory
     container_name: inventory
     ports:
     - "8080:8080"
-    depends_on:
-      - rabbitmq_service
-      - database
   users:
     image: hotelapp/users
     container_name: users
     ports:
     - "8083:8083"
-    depends_on:
-      - rabbitmq_service
-      - database
-  database:
-    image: mongo
-    container_name: my-mongo
-    ports:
-    - "27017-27019:27017-27019"
-  rabbitmq_service:
-    image: "rabbitmq:3-management"
-    ports:
-      - "15672:15672"
-      - "5672:5672"
-    tty: true
-    volumes:
-      - rabbit1:/var/lib/rabbitmq
-      - ./conf/:/etc/rabbitmq/
-    command: "rabbitmq-server"
-
-
-volumes:
-  rabbit1:
-    driver: local

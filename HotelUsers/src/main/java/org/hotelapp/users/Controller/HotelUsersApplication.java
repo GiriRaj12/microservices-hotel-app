@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 
-@ComponentScan(basePackages =  {"org.hotelapp"})
+@ComponentScan({"org.hotelapp.users"})
 @SpringBootApplication
 public class HotelUsersApplication {
     public static void main(String[] args) {

@@ -7,6 +7,7 @@ import org.hotelapp.commons.Models.Bookings;
 import org.hotelapp.commons.Models.MQModel;
 import org.hotelapp.commons.Utilities.JsonUtils;
 import org.hotelapp.commons.Utilities.StringUtils;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -16,14 +17,13 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 
+@Component
 public class BillingService {
-
     public Bookings addBooking(BillingDTO billingDTO) throws Exception {
         System.out.println(JsonUtils.toJson(billingDTO));
         validateBooking(billingDTO);
         return createBooking(billingDTO);
     }
-
     private Bookings createBooking(BillingDTO billingDTO) throws ParseException, IOException, TimeoutException {
         Bookings bookings = buildBooking(billingDTO);
         System.out.println(JsonUtils.toJson(bookings));

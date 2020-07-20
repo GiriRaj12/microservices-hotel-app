@@ -2,14 +2,17 @@ package org.hotelapp.users.Services;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.hotelapp.commons.Models.Users;
+import org.hotelapp.commons.Utilities.InvalidPayloadException;
 import org.hotelapp.commons.Utilities.JsonUtils;
 import org.hotelapp.commons.Utilities.StringUtils;
 import org.hotelapp.users.Models.UserDTO;
 import org.hotelapp.users.MongoUtils.MongoUtils;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.UUID;
 
+@Component
 public class UserService {
 
     public boolean createUser(UserDTO userDTO){
@@ -34,7 +37,7 @@ public class UserService {
         Users users = MongoUtils.getUserByEmail(userDTO.getEmailId());
         System.out.println(JsonUtils.toJson(users));
         if(!userDTO.getPassword().equals(getDecodedString(users.getPassWord())))
-            throw new IllegalArgumentException("Wrong credentials");
+            throw new InvalidPayloadException("Wrong credentials");
         else
             return users;
     }
@@ -43,15 +46,15 @@ public class UserService {
         Users users = MongoUtils.getUserByEmail(userDTO.getEmailId());
         System.out.println(JsonUtils.toJson(users));
         if(users != null){
-            throw new IllegalArgumentException("User aldready exists");
+            throw new InvalidPayloadException("User aldready exists");
         }
     }
 
     private void validateBasics(UserDTO userDTO){
         if(StringUtils.checkNull(userDTO.getEmailId()))
-            throw new IllegalStateException("Email id cannot be null or Empty");
+            throw new InvalidPayloadException("Email id cannot be null or Empty");
         if(StringUtils.checkNull(userDTO.getPassword()))
-            throw new IllegalStateException("Password cannot be null or Empty");
+            throw new InvalidPayloadException("Password cannot be null or Empty");
     }
 
     private void persistUser(UserDTO userDTO) {
